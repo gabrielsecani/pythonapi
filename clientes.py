@@ -3,11 +3,26 @@ from flask import jsonify, make_response, abort
 
 from pymongo import MongoClient
 
+import os
+
+def get_mongoUri():
+    mongohost=os.environ.get('MONGO_HOST')
+    if mongohost == "" or mongohost is None:
+        mongohost="localhost"
+        
+    mongoport=os.environ.get('MONGO_PORT')
+    if mongoport == "" or mongoport is None:
+        mongoport="27017"
+        
+    mongouri="mongodb://"+mongohost+":"+mongoport+"/"
+    print("Mongo URI = "+mongouri)
+    return mongouri
+
+client = MongoClient(get_mongoUri()) # Local
+db = client.clientes
+
 def get_timestamp():
     return datetime.now().strftime(("%Y-%m-%d %H:%M:%S"))
-
-client = MongoClient("mongodb://localhost:27017/") # Local
-db = client.clientes
 
 def get_dict_from_mongodb():
     itens_db = db.clientes.find()
@@ -17,9 +32,6 @@ def get_dict_from_mongodb():
             item = dict(i)
             PEOPLE[item["lname"]] = (i)
     return PEOPLE
-
-def get_timestamp():
-    return datetime.now().strftime(("%Y-%m-%d %H:%M:%S"))
 
 def read_all():
     PEOPLE = get_dict_from_mongodb()
