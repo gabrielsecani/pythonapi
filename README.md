@@ -16,6 +16,16 @@
 ## Docker
     
     https://hub.docker.com/repository/docker/gabrielltr/clientes_microservice
+    docker push gabrielltr/clientes_microservice:latest
     
-    docker run --name clientes-microservice -it -p 5000:5000 -d usuario/clientes_microservice
-    
+### crud in memory
+    docker run --name clientes-microservice -it -p 5000:5000 -d gabrielltr/clientes_microservice
+
+### crud mongodb
+    docker run --name clientes-microservice-mongo -it -p 5050:5000 -d gabrielltr/clientes_microservice:mongo
+
+## Mongo
+
+        pip3 install pymongo
+ 
+        docker run -d -p 27017:27017 --name mongodb mongo
