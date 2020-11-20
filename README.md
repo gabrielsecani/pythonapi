@@ -2,20 +2,20 @@
 
 ## prereqs
         
-    criar novo ambiente python
-        python3 -m venv clientes_venv
-        
-        
-        pip3 install --upgrade pip
-        source clientes_venv/bin/activate
-        
-        pip install flask flask_cors wheel connexion connexion connexion[swagger-ui]
+criar novo ambiente python
+    python3 -m venv clientes_venv
+    
+    
+    pip3 install --upgrade pip
+    source clientes_venv/bin/activate
+    
+    pip install flask flask_cors wheel connexion connexion connexion[swagger-ui]
         
         
     
 ## Docker
     
-    https://hub.docker.com/repository/docker/gabrielltr/clientes_microservice
+https://hub.docker.com/repository/docker/gabrielltr/clientes_microservice
     docker push gabrielltr/clientes_microservice:latest
     
 ### crud in memory
@@ -26,6 +26,7 @@
 
 ## Mongo
 
-        pip3 install pymongo
- 
-        docker run -d -p 27017:27017 --name mongodb mongo
+    pip3 install pymongo
+
+    docker run -d -p 27017:27017 --name mongodb mongo
+
